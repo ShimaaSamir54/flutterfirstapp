@@ -46,6 +46,14 @@ class _MyHomePageState extends State<MyHomePage> {
     },
   ];
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore =0 ;
+    });
+  }
+
+
   void _answerQuestion(int score) {
     //State is  the information of a StatefulWidget. Every StatefulWidget has a State Object.
     // This State Object keeps a track of the variables and functions that we define inside a StatefulWidget.
@@ -70,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // if condition _questionIndex > questions.length in below we will found else
         body: _questionIndex < _questions.length
             ? Quiz(_answerQuestion, _questions, _questionIndex)
-            : Result(),
+            : Result(_totalScore , _resetQuiz),
       ),
     );
   }
